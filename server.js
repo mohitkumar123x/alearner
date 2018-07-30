@@ -2,6 +2,7 @@ const ex=require('express');
 const hbs=require('hbs');
 const fs=require('fs');
 var app=ex();
+const port=process.env.PORT||3000;
 
 app.set('view engine','hbs');
 hbs.registerPartials(__dirname+'/views/Partials');
@@ -43,6 +44,6 @@ app.get('/',(req,res)=>{
 
                                    }
                 );
-app.listen(3000,
-           ()=>{console.log("server is running at port:3000");}
+app.listen(port,
+           ()=>{console.log("server is running at port:",port);}
           );
