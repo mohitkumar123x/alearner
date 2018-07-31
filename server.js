@@ -1,15 +1,16 @@
 const ex=require('express');
 const hbs=require('hbs');
 const fs=require('fs');
+
 var app=ex();
 const port=process.env.PORT||3000;
 
 app.set('view engine','hbs');
-hbs.registerPartials(__dirname+'/views/Partials');
+hbs.registerPartials(__dirname+'/views/partials');
 hbs.registerHelper('currentyear',()=>{return new Date().getFullYear()});
  app.use((req,res,next)=>
                         { var now= new Date().toString();
-                          log=`${now}: ${req.method} ${req.url}`;
+                          var log=`${now}: ${req.method} ${req.url}`;
                           fs.appendFile('server.log',log+'\n',(error)=>{
                                                                         if(error)console.log("unable to append File:server.log",error);
                                                                        }
